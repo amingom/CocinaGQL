@@ -1,4 +1,4 @@
-import { Collection } from "mongodb";
+import { Collection, Double } from "mongodb";
 import { CoctelModel, RecetaModel } from "./types.ts";
 import { GraphQLError } from "graphql";
 import { ObjectId } from "mongodb";
@@ -95,7 +95,7 @@ export const resolvers = {
             args: {id: string},
             ctx: Context
         ): Promise<boolean> => {
-            const {deletedCount} = await ctx.recetaColletion.deleteOne({_id: ObjectId(args.id)});
+            const {deletedCount} = await ctx.recetaColletion.deleteOne({_id: new ObjectId(args.id)});
 
             if(deletedCount){
                 return true;
@@ -114,7 +114,7 @@ export const resolvers = {
             }
 
             if(args.fat_total_g){
-                datosModificar.fat_total_g = args.fat_total_g;
+                datosModificar.fat_total_g = new Double(args.fat_total_g);
             }
 
             if(args.sodium_mg){
@@ -126,15 +126,15 @@ export const resolvers = {
             }
 
             if(args.carbohydrates_total_g){
-                datosModificar.carbohydrates_total_g = args.carbohydrates_total_g;
+                datosModificar.carbohydrates_total_g = new Double(args.carbohydrates_total_g);
             }
 
             if(args.fiber_g){
-                datosModificar.fiber_g = args.fiber_g;
+                datosModificar.fiber_g = new Double(args.fiber_g);
             }
 
             if(args.sugar_g){
-                datosModificar.sugar_g = args.sugar_g;
+                datosModificar.sugar_g = new Double(args.sugar_g);
             }
 
             const recetaModificada = await ctx.recetaColletion.findOneAndUpdate(
@@ -148,7 +148,7 @@ export const resolvers = {
             }else {
                 throw new GraphQLError("No se ha podido modificar la receta");
             }
-            
+
         }
     }
 }

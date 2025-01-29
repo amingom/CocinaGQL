@@ -16,7 +16,7 @@ export type RecetaModel = OptionalId<{
     sugar_g: Double
 }>
 
-export type Coctel = {
+/*export type Coctel = {
     id: string,
     name: string,
     ingredients: string[],
@@ -32,7 +32,7 @@ export type Receta = {
     carbohydrates_total_g: number,
     fiber_g: number,
     sugar_g: number
-}
+}*/
 
 export type API_COCKTAIL = {
     name: string,
