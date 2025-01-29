@@ -148,6 +148,7 @@ export const resolvers = {
             }else {
                 throw new GraphQLError("No se ha podido modificar la receta");
             }
+            
         }
     }
 }
