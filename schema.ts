@@ -38,5 +38,4 @@ type Mutation {
     deleteRecipe(id: String!): Boolean!
 }
 
-
 `

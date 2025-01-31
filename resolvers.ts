@@ -149,5 +149,6 @@ export const resolvers = {
                 throw new GraphQLError("No se ha podido modificar la receta");
             }
         }
-    }
+    } 
+    
 }
